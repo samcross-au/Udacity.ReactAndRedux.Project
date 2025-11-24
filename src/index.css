@@ -1,0 +1,338 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #252525;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.btn {
+  text-transform: uppercase;
+  margin: 35px auto;
+  padding: 10px;
+  border: 1px solid #000 !important;
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  width: 250px;
+  position: relative;
+}
+
+.btn:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}
+.center {
+  text-align: center;
+}
+.nav .nav-container .nav-list {
+  display: flex !important;
+  align-items: center;
+  flex-direction: row;
+  justify-content: left;
+  gap: 30px;
+}
+.nav {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 10px 0;
+  background-color: lightgreen;
+}
+.nav .nav-container {
+  width: 100%;
+  max-width: 1320px;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+  display: flex !important;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.nav .nav-container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.nav .nav-container li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-decoration: none;
+}
+.nav .nav-container li:first-child {
+  padding-left: 0;
+}
+.nav .nav-container .avatar {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px;
+}
+.content {
+  margin-top: 70px;
+}
+.dashboard-question-list ul {
+  padding-left: 0 !important;
+}
+.dashboard-question-list li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dashboard-question-list li a {
+  text-decoration: none;
+  color: #252525;
+}
+
+.avatar {
+  height: 50px;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.question {
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  color: #000 !important;
+}
+.question-info {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.question-info h2{
+  text-align: center;
+}
+
+.new-question {
+  width: 100%;
+  max-width: 590px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.new-question .new-options {
+  display: flex;
+  gap: 10px;
+}
+.new-question  .new-options textarea{
+  width: 50%;
+}
+.textarea {
+  border-radius: 4px;
+  border: 1px solid #dad7d7;
+  padding: 10px;
+  font-size: 15px;
+  height: 100px;
+}
+
+.loading-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1000;
+}
+
+.loading-bar {
+  height: 100%;
+  background-color: #2196f3;
+  transition: width 400ms ease-in-out;
+}
+.option-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.option {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.option button {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 18px;
+  padding: 6px;
+  border-radius: 12px;
+}
+.option button[data-selected="true"] {
+  background-color: palegreen;
+  color: darkgreen;
+  border-color: none;
+}
+.option button[data-selected="true"]::after {
+  margin-left: 5px;
+  content: "\2705";
+}
+.option div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.option .total-answers {
+  font-weight: bolder;
+  font-size: 75px;
+  color: cornflowerblue;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px;
+}
+.dashboard-question-list {
+  padding-left: 0;
+}
+.dashboard-question-list .question-link {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+.dashboard-question-list .question-link .link-title {
+  font-size: 20px;
+  text-decoration: underline;
+}
+.dashboard-question-list .question-link .link-question {
+  text-transform: capitalize;
+}
+.dashboard-question-list .question-link .link-title .author {
+  font-weight: bold;
+}
+.tab-container {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  border-bottom: 1px solid lightgray;
+}
+.tab-container .tab {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+}
+.tab-container .tab[data-active='true'] {
+  background-color: #B1B1B1;
+  border-bottom: 0;
+  box-shadow: 0px -2px 12px 1px #a3a1a1;
+}
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.leaderboard-user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+}
+.leaderboard-user .profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.leaderboard-user .profile-avatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px;
+}
+.leaderboard-user .profile-questions {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+.leaderboard-user .profile-questions-asked, .leaderboard-user .profile-questions-answered {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile {
+  display: flex;
+  gap: 20px;
+}
+.profile .profile-picture .profile-avatar {
+  width: 200px;
+  border-radius: 200px;
+}
+.profile .profile-question .question-link {
+  text-transform: capitalize;
+}
+.logout {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-portal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 20px);
+}
+[name="user-select"] {
+  margin-bottom: 10px;
+}
+.Error {
+  width: 300px;
+  text-align: center;
+  color: red;
+  margin-bottom: 10px;
+}
+.new-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+}
+.new-login select {
+  width: 100%;
+}
