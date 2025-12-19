@@ -4,7 +4,7 @@ import middleware from "../middleware";
 
 export const setupStore = (preloadedState = {}) => {
   return configureStore({
-    reducer: rootReducer,
+    reducer: reducer,
     preloadedState
   })
 }

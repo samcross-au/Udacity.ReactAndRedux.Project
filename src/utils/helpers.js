@@ -8,7 +8,7 @@ export function formatQuestion (question, author, authedUser) {
   const { id, timestamp, optionOne, optionTwo } = question;
   const { name } = author;
 
-  const hasAnswered = optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser);
+  const hasAnswered = optionOne.votes.includes(authedUser.id) || optionTwo.votes.includes(authedUser.id);
 
   return {
     name,

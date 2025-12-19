@@ -10,6 +10,9 @@ import { HashRouter as Router } from "react-router-dom";
 
 import reportWebVitals from './reportWebVitals';
 
+import { AuthProvider } from "./server/AuthProvider";
+
+
 import 'bootstrap/dist/css/bootstrap.css';
 import "./index.css";
 

@@ -1,26 +1,19 @@
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
 import { render } from '@testing-library/react'
-import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-
 import { setupStore } from './store'
 
 export function renderWithProviders(
   ui,
-  extendedRenderOptions = {}
-) {
-  const {
+  {
     preloadedState = {},
+    // Automatically create a store instance if no store was passed in
     store = setupStore(preloadedState),
     ...renderOptions
-  } = extendedRenderOptions
-
-  const Wrapper = ({ children }) => (
-    <Provider store={store}>{children}</Provider>
-  )
-
-  return {
-    store,
-    ...render(ui, { wrapper: Wrapper, ...renderOptions })
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>
   }
+  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) }
 }

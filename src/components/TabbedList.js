@@ -6,6 +6,7 @@ const TabbedList = ({categories}) => {
 
   const handleTabClick = (e) => {
     const categoryKey = e.target.dataset.questionType;
+    console.log('Active Category: ', categories.find((category) => category.id === categoryKey))
     setActiveCategory(categories.find((category) => category.id === categoryKey));
   }
 

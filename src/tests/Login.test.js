@@ -5,7 +5,9 @@ import Login from '../pages/Login';
 import { createStore } from "redux";
 import reducer from "../reducers";
 import middleware from "../middleware";
-import { _getUsers } from '../utils/_DATA';
+import { _getQuestions, _getUsers } from '../utils/_DATA';
+import { MemoryRouter } from "react-router-dom";
+import { renderWithProviders } from '../utils/testing';
 
 let view;
 
@@ -13,25 +15,29 @@ beforeEach(async () => {
   const users = await _getUsers();
   const initialState = {
     authedUser: null,
-    users,
-    questions: {},
+    users: await _getUsers(),
+    questions: await _getQuestions(),
     loadingBar: 0,
     logger: false
   };
   
-  const store = createStore(reducer, initialState, middleware);
-  view = render(
-    <Provider store={store}>
-      <Login />
-    </Provider>
+  view = renderWithProviders(
+    <MemoryRouter future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
+        <Login />
+    </MemoryRouter>,
+    {
+      preloadedState: initialState,
+    }
   );
 });
 
 describe('Login', () => {
-  it('will match the snapshot', function () {
+  it('will match the snapshot', async function () {
     expect(view).toMatchSnapshot();
   });
+});
 
+describe("login content", () => {  
   it('will have all expected fields', async () => {
     const usernameInput = view.getByTestId('user-name-input');
     const passwordInput = view.getByTestId('password-input');
@@ -50,6 +56,7 @@ describe('Login', () => {
     fireEvent.change(passwordInput, { target: { value: 'password124' } });
 
     const submitButton = view.getByTestId('submit-button');
+
     await React.act(async () => {
       fireEvent.click(submitButton);
     });
