@@ -4,7 +4,7 @@ const Leaderboard = ({ users }) => {
   return (
     <div className="leaderboard">
       {
-        users.slice().sort((a, b) => b.totalScore - a.totalScore).map((user, index) => {
+        users.map((user, index) => {
           return (
             <div key={user.id} className="leaderboard-user" data-testid={"profile_" + user.id}>
               <div className="profile-info">
@@ -25,7 +25,7 @@ const Leaderboard = ({ users }) => {
   );
 }
 
-const mapStateToProps = ({ authedUser, users, questions }, props) => {
+const mapStateToProps = ({ authedUser, users, questions }) => {
   return {
     authedUser,
     users: Object.values(users).map((user) => {
@@ -33,7 +33,7 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
         ...user,
         totalScore: user.questions.length + Object.keys(user.answers).length,
       }
-    }),
+    }).sort((a, b) => b.totalScore - a.totalScore),
     questions
   };
 };

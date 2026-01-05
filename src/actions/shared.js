@@ -13,10 +13,11 @@ export function handleInitialData() {
   return async (dispatch) => {
     dispatch(loggerConfig())
     dispatch(showLoading());
-    return getInitialData().then(({ users, questions }) => {
-      dispatch(receiveUsers(users));
-      dispatch(receiveQuestions(questions));
-      dispatch(hideLoading());
-    });
+    return getInitialData()
+      .then(({ users, questions }) => {
+        dispatch(receiveUsers(users));
+        dispatch(receiveQuestions(questions));
+        dispatch(hideLoading());
+      });
   };
 }

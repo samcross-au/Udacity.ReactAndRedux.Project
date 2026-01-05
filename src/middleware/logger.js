@@ -1,5 +1,6 @@
 const logger = (store) => (next) => (action) => {
   const returnValue = next(action);
+  
   if (!store.getState().logger) {
     return returnValue;
   }

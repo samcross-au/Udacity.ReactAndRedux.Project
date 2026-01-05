@@ -15,18 +15,22 @@ function addQuestion(question) {
 }
 
 export function handleAddQuestion(option1, option2) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { authedUser } = getState();
 
     dispatch(showLoading());
 
-    return saveQuestion({
+    const question = await saveQuestion({
       optionOneText: option1,
       optionTwoText: option2,
       author: authedUser.id,
-    })
-      .then((question) => dispatch(addQuestion(question)))
-      .then(() => dispatch(hideLoading()));
+    });
+
+    authedUser.questions.push(question.id);
+
+    dispatch(addQuestion(question));
+    
+    return dispatch(hideLoading());
   };
 }
 
@@ -47,13 +51,12 @@ export function answerQuestion({ qid, authedUser, answer }) {
 }
 
 export function handleAnswerQuestion(data) {
-  return (dispatch) => {
-    dispatch(answerQuestion(data));
+  return async (dispatch, getState) => {
+    const { authedUser } = getState();
 
-    return saveQuestionAnswer(data).catch((e) => {
-      console.warn("Error in handleAnswerQuestion: ", e);
-      dispatch(answerQuestion(data));
-      alert("The was an error answering the question. Try again.");
-    });
+    dispatch(answerQuestion(data));
+    authedUser.answers[data.qid] = data.answer;
+    
+    return await saveQuestionAnswer(data);
   };
 }
