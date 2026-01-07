@@ -43,14 +43,16 @@ const mapStateToProps = ({ questions, users, authedUser }) => {
     {
       id: 'new',
       title: 'New Polls',
-      data: formattedQuestions.filter((question) => !question.hasAnswered),
+      data: formattedQuestions.filter((question) => !question.hasAnswered).sort((a, b) => b.timestamp - a.timestamp),
     },
     {
       id: 'answered',
       title: 'Answered Polls',
-      data: formattedQuestions.filter((question) => question.hasAnswered),
+      data: formattedQuestions.filter((question) => question.hasAnswered).sort((a, b) => b.timestamp - a.timestamp),
     }
   ]
+
+  console.log('Categories: ', categories);
 
   return {
     authedUser: Object.values(users).find((user) => user.id === authedUser),
